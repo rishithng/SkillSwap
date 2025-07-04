@@ -7,3 +7,8 @@ export const addSkill = (skill) => {
   skills.push(skill);
   localStorage.setItem('skills', JSON.stringify(skills));
 };
+
+export const removeSkill = (id) => {
+  const skills = getSkills().filter((s) => s.id !== id);
+  localStorage.setItem('skills', JSON.stringify(skills));
+};
