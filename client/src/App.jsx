@@ -27,9 +27,10 @@ function App() {
   setSkills(getSkills());    // reload updated list
 };
 
-  return user ? (
-    <div>
-      <h2>Welcome, {user}</h2>
+ return user ? (
+  <div className="container">
+    <h2>Welcome, {user}</h2>
+    <button className="logout" onClick={handleLogout}>🚪 Logout</button>
       <input
         value={newSkill}
         onChange={(e) => setNewSkill(e.target.value)}
