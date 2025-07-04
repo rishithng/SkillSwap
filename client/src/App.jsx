@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Login from './pages/Login.jsx';
-import { getSkills, addSkill } from './utils/localDB.js';
+import { getSkills, addSkill, removeSkill } from './utils/localDB.js';
 
 function App() {
   const [user, setUser] = useState(localStorage.getItem('user'));
@@ -21,6 +21,11 @@ function App() {
     setSkills(getSkills());
     setNewSkill('');
   };
+
+  const handleDeleteSkill = (id) => {
+  removeSkill(id);           // remove from localStorage
+  setSkills(getSkills());    // reload updated list
+};
 
   return user ? (
     <div>
