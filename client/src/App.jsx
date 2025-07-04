@@ -38,10 +38,29 @@ function App() {
       />
       <button onClick={handleAddSkill}>Add Skill</button>
       <ul>
-        {skills.map((s) => (
-          <li key={s.id}>{s.name} (by {s.user})</li>
-        ))}
-      </ul>
+  {skills.map((s) => (
+    <li key={s.id}>
+      {editingId === s.id ? (
+        <>
+          <input
+            className="editing-input"
+            value={editingText}
+            onChange={(e) => setEditingText(e.target.value)}
+          />
+          <button onClick={handleEditSave}>💾 Save</button>
+        </>
+      ) : (
+        <>
+          <span>{s.name} <small>(by {s.user})</small></span>
+          <div>
+            <button onClick={() => handleEditClick(s.id, s.name)}>✏️ Edit</button>
+            <button onClick={() => handleDeleteSkill(s.id)}>🗑️ Delete</button>
+          </div>
+        </>
+      )}
+    </li>
+  ))}
+</ul>
     </div>
   ) : (
     <Login onLogin={setUser} />
